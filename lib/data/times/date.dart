@@ -39,8 +39,8 @@ class Dates {
   }
 
   bool isNight(DateTime currentTime, Weather? weatherData) {
-    if (currentTime.minute < (weatherData?.sunset?.minute ?? 0) &&
-        currentTime.hour > (weatherData?.sunset?.hour ?? 0) &&
+    if ((currentTime.hour >= (weatherData?.sunset?.hour ?? 24) &&
+            currentTime.hour > (weatherData?.sunset?.minute ?? 60)) &&
         currentTime.hour > 12) {
       // returns true if its night time
       return true;

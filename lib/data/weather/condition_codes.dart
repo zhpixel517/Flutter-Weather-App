@@ -31,7 +31,7 @@ class WeatherCodes {
           case "802":
             return AppStrings.sunny;
           case "803":
-            return AppStrings.cloudy;
+            return AppStrings.sunny;
           case "804":
             return AppStrings.cloudy;
           default:

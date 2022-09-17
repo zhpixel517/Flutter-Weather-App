@@ -53,8 +53,8 @@ class _HomePageState extends State<HomePage> {
               stream: _viewModel.outputCurrentWeatherData,
               builder: (context, snapshot) {
                 WeatherModel weatherData = WeatherModel(snapshot);
-                FutureWeatherModel futureWeatherData =
-                    FutureWeatherModel(futureSnapshot);
+                FutureWeatherModelImpl futureWeatherData =
+                    FutureWeatherModelImpl(futureSnapshot);
                 if (snapshot.data != null && futureSnapshot.data != null) {
                   return Stack(
                     children: [
@@ -101,13 +101,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   SizedBox _getFiveDayForecast(
-      BuildContext context, FutureWeatherModel futureWeatherModel) {
+      BuildContext context, FutureWeatherModelImpl futureWeatherModel) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.35,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          for (Weather day in futureWeatherModel.fiveDaysFuture ?? [])
+          for (FutureWeatherModel day
+              in futureWeatherModel.fiveDaysFuture ?? [])
             FutureDay(day)
         ],
       ),

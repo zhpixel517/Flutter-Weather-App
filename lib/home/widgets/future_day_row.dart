@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_weather/data/weather/condition_codes.dart';
+import 'package:my_weather/data/weather/weather_model.dart';
 import 'package:weather/weather.dart';
 import 'package:weather_icons/weather_icons.dart';
 import '../../app/resources/colors.dart';
@@ -9,7 +10,7 @@ import '../../app/resources/padding.dart';
 import '../../data/times/date.dart';
 
 class FutureDay extends StatelessWidget {
-  final Weather _weatherData;
+  final FutureWeatherModel _weatherData;
 
   const FutureDay(
     this._weatherData, {
@@ -59,7 +60,7 @@ class FutureDay extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: constraints.maxWidth * 0.20,
+                width: constraints.maxWidth * 0.245,
                 child: Text(
                   Dates.getWeekday(_weatherData.date!.weekday, true),
                   style: weatherConditionTextStyle,
@@ -69,7 +70,7 @@ class FutureDay extends StatelessWidget {
                   padding: const EdgeInsets.only(
                       bottom: 7.0), // hard coded val that seems to work
                   child: _getCorrectConditionIcon(
-                      _weatherData.weatherConditionCode.toString())),
+                      _weatherData.conditionCode.toString())),
               Padding(
                 padding:
                     const EdgeInsets.only(right: AppPadding.appSidePadding),
