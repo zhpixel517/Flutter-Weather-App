@@ -3,6 +3,6 @@ import 'package:my_weather/app/app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Paint.enableDithering = true;
+  // Paint.enableDithering = true;
   runApp(WeatherApp());
 }

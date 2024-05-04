@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:my_weather/home/home.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:weather/weather.dart';
@@ -30,7 +31,12 @@ class _WeatherAppState extends State<WeatherApp> {
   }
 
   void _requestPermissions() async {
-    [Permission.location].request();
+    // await [Permission.location, Permission.locationWhenInUse].request();
+    // await Geolocator.requestPermission();
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
   }
 
   @override
